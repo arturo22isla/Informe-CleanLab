@@ -4,14 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power BI Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #report {
+            display: none; /* Ocultar el iframe inicialmente */
+        }
+    </style>
 </head>
 <body>
     <h2>Reporte de Power BI</h2>
     <p>A continuación, puedes visualizar el reporte directamente en esta página:</p>
-    
 
-    <iframe title="CleanLab_Informe" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTc1NjgyYzUtM2NjNC00YTdjLThkMTAtMGQyNTRlZjk5NzFmIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+    <!-- Formulario para ingresar la contraseña -->
+    <input type="password" id="password" placeholder="Ingresa la contraseña">
+    <button onclick="checkPassword()">Acceder</button>
     
+    <!-- Iframe oculto que se mostrará al ingresar la contraseña correcta -->
+    <div id="report">
+        <iframe title="CleanLab_Informe" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTc1NjgyYzUtM2NjNC00YTdjLThkMTAtMGQyNTRlZjk5NzFmIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const correctPassword = 'monkeymono'; // Reemplaza esto con tu contraseña
+            const inputPassword = document.getElementById('password').value;
+            
+            if (inputPassword === correctPassword) {
+                document.getElementById('report').style.display = 'block'; // Mostrar el iframe
+            } else {
+                alert('Contraseña incorrecta. Intenta de nuevo.'); // Mensaje de error
+            }
+        }
+    </script>
 </body>
 </html>
-
