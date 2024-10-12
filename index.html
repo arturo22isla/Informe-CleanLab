@@ -56,8 +56,8 @@
             margin-top: 20px;
         }
         iframe {
-            width: 70%;
-            height: 500px;
+            width: 80%; /* Ajustado al 80% */
+            height: 600px; /* Ajustado a 600px */
             border: 1px solid #ccc;
         }
     </style>
@@ -96,7 +96,7 @@
                     const reportUrl = decryptBase64(reportData.encryptedUrl);
 
                     const reportDiv = document.getElementById('report');
-                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" src="${reportUrl}" frameborder="0" allowFullScreen="true"></iframe>`;
+                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" src="${reportUrl}" frameborder="0" allowFullScreen="true" style="width: 80%; height: 600px;"></iframe>`;
                     reportDiv.style.display = 'block';
                 } else {
                     alert('Contraseña incorrecta. Intenta de nuevo.');
