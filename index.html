@@ -12,20 +12,6 @@
         }
         #report {
             display: none;
-            margin-top: 20px; /* Espaciado adicional para el informe */
-        }
-        .input-container {
-            margin: 20px 0; /* Espaciado para la sección de contraseña */
-        }
-        input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -33,28 +19,29 @@
     <h2>Reporte de Power BI</h2>
     <p>A continuación, puedes visualizar el reporte directamente en esta página:</p>
 
-    <div class="input-container">
-        <input type="password" id="password" placeholder="Coloca la contraseña">
-        <button onclick="checkPassword()">Acceder</button>
-    </div>
+    <input type="password" id="password" placeholder="Coloca la contraseña">
+    <button onclick="checkPassword()">Acceder</button>
     
     <div id="report"></div>
 
     <script>
         function decryptBase64(encodedString) {
-            return atob(encodedString);
+            return atob(encodedString); 
         }
 
         async function checkPassword() {
             const inputPassword = document.getElementById('password').value;
 
             try {
+             
                 const response = await fetch('password.json');
                 const data = await response.json();
                 
+           
                 const correctPassword = decryptBase64(data.encryptedPassword);
 
                 if (inputPassword === correctPassword) {
+                
                     const reportResponse = await fetch('config.json');
                     const reportData = await reportResponse.json();
                     const reportUrl = decryptBase64(reportData.encryptedUrl);
