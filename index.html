@@ -56,8 +56,8 @@
             margin-top: 20px;
         }
         iframe {
-            width: 50%; 
-            height: 600px; 
+            width: 60% !important; /* Cambiado de 80% a 60% para hacerlo más angosto */
+            height: 600px;
             border: 1px solid #ccc;
         }
     </style>
@@ -66,7 +66,7 @@
     
     <div id="header">
         <img src="https://cdn.shopify.com/s/files/1/0367/8627/4441/files/logo_clean_lab_shopify_Mesa_de_trabajo_1_29c8ca07-3fb9-4e1f-b6e7-cbded26f3473_200x60@2x.png?v=1614295188.webp" alt="CleanLab Logo">
-        <h2>Reporte de Clean Lab</h2>
+        <h2>Reporte de Power BI</h2>
     </div>
 
     <p>A continuación, puedes visualizar el reporte colocando la contraseña correcta:</p>
@@ -96,7 +96,7 @@
                     const reportUrl = decryptBase64(reportData.encryptedUrl);
 
                     const reportDiv = document.getElementById('report');
-                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" src="${reportUrl}" frameborder="0" allowFullScreen="true" style="width: 80%; height: 600px;"></iframe>`;
+                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" src="${reportUrl}" frameborder="0" allowFullScreen="true" style="width: 60%; height: 600px;"></iframe>`;
                     reportDiv.style.display = 'block';
                 } else {
                     alert('Contraseña incorrecta. Intenta de nuevo.');
