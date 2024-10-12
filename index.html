@@ -9,9 +9,45 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h2 {
+            color: #0078d4;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 1.1em;
+            width: 250px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #005fa3;
         }
         #report {
             display: none;
+            margin-top: 50px;
+        }
+        iframe {
+            width: 90%;
+            height: 600px;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
@@ -33,21 +69,18 @@
             const inputPassword = document.getElementById('password').value;
 
             try {
-             
                 const response = await fetch('password.json');
                 const data = await response.json();
                 
-           
                 const correctPassword = decryptBase64(data.encryptedPassword);
 
                 if (inputPassword === correctPassword) {
-                
                     const reportResponse = await fetch('config.json');
                     const reportData = await reportResponse.json();
                     const reportUrl = decryptBase64(reportData.encryptedUrl);
 
                     const reportDiv = document.getElementById('report');
-                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" width="600" height="373.5" src="${reportUrl}" frameborder="0" allowFullScreen="true"></iframe>`;
+                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" src="${reportUrl}" frameborder="0" allowFullScreen="true"></iframe>`;
                     reportDiv.style.display = 'block';
                 } else {
                     alert('Contraseña incorrecta. Intenta de nuevo.');
