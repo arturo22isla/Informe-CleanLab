@@ -12,32 +12,32 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        #logo {
+        #header {
             display: flex;
             justify-content: center;
-            margin-bottom: 10px; /* Espacio reducido */
+            align-items: center;
+            margin-bottom: 20px;
         }
-        #logo img {
-            width: 10px; /* Ajusta el tamaño del logo */
-            height: 10px;
-            margin-right: 10px;
+        #header img {
+            width: 50px; /* Ajusta el tamaño del logo */
+            height: auto;
+            margin-right: 15px; /* Espacio entre logo y título */
         }
         h2 {
             color: #0078d4;
             font-size: 2.5em;
-            display: inline-block;
-            vertical-align: middle;
+            margin: 0; /* Elimina margen para mejor alineación */
         }
         p {
             font-size: 1.2em;
-            margin-bottom: 10px; /* Espacio reducido */
+            margin-bottom: 10px;
         }
         input[type="password"] {
             padding: 10px;
             font-size: 1.1em;
             width: 250px;
             margin-right: 10px;
-            margin-bottom: 20px; /* Espacio reducido */
+            margin-bottom: 20px;
         }
         button {
             padding: 10px 20px;
@@ -53,18 +53,18 @@
         }
         #report {
             display: none;
-            margin-top: 20px; /* Espacio reducido */
+            margin-top: 20px;
         }
         iframe {
-            width: 70%; /* Ancho reducido al 70% */
-            height: 500px; /* Altura ajustada */
+            width: 70%;
+            height: 500px;
             border: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
     <!-- Sección del logo y el título juntos -->
-    <div id="logo">
+    <div id="header">
         <img src="https://cdn.shopify.com/s/files/1/0367/8627/4441/files/logo_clean_lab_shopify_Mesa_de_trabajo_1_29c8ca07-3fb9-4e1f-b6e7-cbded26f3473_200x60@2x.png?v=1614295188.webp" alt="CleanLab Logo">
         <h2>Reporte de Power BI</h2>
     </div>
@@ -108,4 +108,3 @@
     </script>
 </body>
 </html>
-
