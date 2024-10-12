@@ -12,21 +12,32 @@
             background-color: #f4f4f4;
             color: #333;
         }
+        #logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px; /* Espacio reducido */
+        }
+        #logo img {
+            width: 80px; /* Ajusta el tamaño del logo */
+            height: auto;
+            margin-right: 10px;
+        }
         h2 {
             color: #0078d4;
             font-size: 2.5em;
-            margin-bottom: 10px;
+            display: inline-block;
+            vertical-align: middle;
         }
         p {
             font-size: 1.2em;
-            margin-bottom: 20px; /* Espacio reducido aquí */
+            margin-bottom: 10px; /* Espacio reducido */
         }
         input[type="password"] {
             padding: 10px;
             font-size: 1.1em;
             width: 250px;
             margin-right: 10px;
-            margin-bottom: 20px; /* Espacio reducido aquí */
+            margin-bottom: 20px; /* Espacio reducido */
         }
         button {
             padding: 10px 20px;
@@ -42,25 +53,22 @@
         }
         #report {
             display: none;
-            margin-top: 30px; /* Espacio reducido aquí */
+            margin-top: 20px; /* Espacio reducido */
         }
         iframe {
-            width: 80%; /* Ancho reducido al 80% */
+            width: 70%; /* Ancho reducido al 70% */
             height: 500px; /* Altura ajustada */
             border: 1px solid #ccc;
-        }
-        #logo {
-            margin-bottom: 20px; /* Espacio entre el logo y el resto del contenido */
         }
     </style>
 </head>
 <body>
-    <!-- Logo de CleanLab -->
+    <!-- Sección del logo y el título juntos -->
     <div id="logo">
-        <img src="https://www.cleanlab.pe/cdn/shop/files/logo_final_final_barra_Mesa_de_trabajo_1.png?v=1614300858&width=600" alt="CleanLab Logo" width="200">
+        <img src="https://www.cleanlab.pe/cdn/shop/files/logo_final_final_barra_Mesa_de_trabajo_1.png?v=1614300858&width=600" alt="CleanLab Logo">
+        <h2>Reporte de Power BI</h2>
     </div>
 
-    <h2>Reporte de Power BI</h2>
     <p>A continuación, puedes visualizar el reporte directamente en esta página:</p>
 
     <input type="password" id="password" placeholder="Coloca la contraseña">
@@ -100,3 +108,4 @@
     </script>
 </body>
 </html>
+
