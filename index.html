@@ -27,15 +27,31 @@
     <div id="report"></div>
 
     <script>
-        function checkPassword() {
+        function decryptUrl(encryptedUrl) {
+            // Aquí agregas el método para desencriptar, por ejemplo, usando atob (base64)
+            return atob(encryptedUrl);
+        }
+
+        async function checkPassword() {
             const correctPassword = 'monkeymono'; // Reemplaza esto con tu contraseña
             const inputPassword = document.getElementById('password').value;
             
             if (inputPassword === correctPassword) {
-                // Cargar el iframe dinámicamente si la contraseña es correcta
-                const reportDiv = document.getElementById('report');
-                reportDiv.innerHTML = `<iframe title="CleanLab_Informe" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTc1NjgyYzUtM2NjNC00YTdjLThkMTAtMGQyNTRlZjk5NzFmIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>`;
-                reportDiv.style.display = 'block'; // Mostrar el iframe
+                try {
+                    // Cargar la URL cifrada desde el archivo config.json
+                    const response = await fetch('config.json');
+                    const data = await response.json();
+                    
+                    // Desencriptar la URL del informe
+                    const reportUrl = decryptUrl(data.encryptedUrl);
+
+                    // Cargar el iframe dinámicamente si la contraseña es correcta
+                    const reportDiv = document.getElementById('report');
+                    reportDiv.innerHTML = `<iframe title="CleanLab_Informe" width="600" height="373.5" src="${reportUrl}" frameborder="0" allowFullScreen="true"></iframe>`;
+                    reportDiv.style.display = 'block'; // Mostrar el iframe
+                } catch (error) {
+                    console.error('Error al cargar el informe:', error);
+                }
             } else {
                 alert('Contraseña incorrecta. Intenta de nuevo.'); // Mensaje de error
             }
