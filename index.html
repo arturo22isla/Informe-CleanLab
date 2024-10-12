@@ -26,22 +26,22 @@
 
     <script>
         function decryptBase64(encodedString) {
-            return atob(encodedString); // Desencriptar Base64
+            return atob(encodedString); 
         }
 
         async function checkPassword() {
             const inputPassword = document.getElementById('password').value;
 
             try {
-                // Cargar la contraseña encriptada desde password.json
+             
                 const response = await fetch('password.json');
                 const data = await response.json();
                 
-                // Desencriptar la contraseña
+           
                 const correctPassword = decryptBase64(data.encryptedPassword);
 
                 if (inputPassword === correctPassword) {
-                    // Cargar la URL del informe de Power BI desde config.json
+                
                     const reportResponse = await fetch('config.json');
                     const reportData = await reportResponse.json();
                     const reportUrl = decryptBase64(reportData.encryptedUrl);
