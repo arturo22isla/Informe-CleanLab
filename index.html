@@ -11,7 +11,7 @@
             margin: 50px;
         }
         #report {
-            display: none; /* Ocultar el div inicialmente */
+            display: none;
         }
     </style>
 </head>
@@ -19,41 +19,41 @@
     <h2>Reporte de Power BI</h2>
     <p>A continuación, puedes visualizar el reporte directamente en esta página:</p>
 
-    <!-- Formulario para ingresar la contraseña -->
     <input type="password" id="password" placeholder="Coloca la contraseña">
     <button onclick="checkPassword()">Acceder</button>
     
-    <!-- Div donde se cargará el iframe dinámicamente -->
     <div id="report"></div>
 
     <script>
-        function decryptUrl(encryptedUrl) {
-            // Aquí agregas el método para desencriptar, por ejemplo, usando atob (base64)
-            return atob(encryptedUrl);
+        function decryptBase64(encodedString) {
+            return atob(encodedString); // Desencriptar Base64
         }
 
         async function checkPassword() {
-            const correctPassword = 'monkeymono'; // Reemplaza esto con tu contraseña
             const inputPassword = document.getElementById('password').value;
-            
-            if (inputPassword === correctPassword) {
-                try {
-                    // Cargar la URL cifrada desde el archivo config.json
-                    const response = await fetch('config.json');
-                    const data = await response.json();
-                    
-                    // Desencriptar la URL del informe
-                    const reportUrl = decryptUrl(data.encryptedUrl);
 
-                    // Cargar el iframe dinámicamente si la contraseña es correcta
+            try {
+                // Cargar la contraseña encriptada desde password.json
+                const response = await fetch('password.json');
+                const data = await response.json();
+                
+                // Desencriptar la contraseña
+                const correctPassword = decryptBase64(data.encryptedPassword);
+
+                if (inputPassword === correctPassword) {
+                    // Cargar la URL del informe de Power BI desde config.json
+                    const reportResponse = await fetch('config.json');
+                    const reportData = await reportResponse.json();
+                    const reportUrl = decryptBase64(reportData.encryptedUrl);
+
                     const reportDiv = document.getElementById('report');
                     reportDiv.innerHTML = `<iframe title="CleanLab_Informe" width="600" height="373.5" src="${reportUrl}" frameborder="0" allowFullScreen="true"></iframe>`;
-                    reportDiv.style.display = 'block'; // Mostrar el iframe
-                } catch (error) {
-                    console.error('Error al cargar el informe:', error);
+                    reportDiv.style.display = 'block';
+                } else {
+                    alert('Contraseña incorrecta. Intenta de nuevo.');
                 }
-            } else {
-                alert('Contraseña incorrecta. Intenta de nuevo.'); // Mensaje de error
+            } catch (error) {
+                console.error('Error al cargar la contraseña o el informe:', error);
             }
         }
     </script>
